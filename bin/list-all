@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+versions_list=(
+  1.10.0
+  1.11.0
+  1.12.0
+  1.13.0
+)
+
+versions=""
+
+for version in "${versions_list[@]}"
+do
+  versions="${versions} ${version}"
+done
+
+echo $versions
