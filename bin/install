@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+install_rust() {
+  local install_type=$1
+  local version=$2
+  local install_path=$3
+
+  if [ "$TMPDIR" = "" ]; then
+    local tmp_download_dir=$(mktemp -d -t asdf_rust)
+  else
+    local tmp_download_dir=$TMPDIR
+  fi
+
+  # echo "install_type: $install_type"
+  # echo "version: $version"
+  # echo "install_path: $install_path"
+  # echo "tmp_download_dir: $tmp_download_dir"
+
+  download_rustup $tmp_download_dir
+
+  $tmp_download_dir/rustup.sh --disable-sudo --prefix=$install_path --revision=$version
+}
+
+download_rustup() {
+  local tmp_download_dir=$1
+
+  # echo "Downloading rustup to $tmp_download_dir"
+  (
+    cd $tmp_download_dir
+    curl -sSf https://static.rust-lang.org/rustup.sh > rustup.sh && chmod +x rustup.sh
+    # ./rustup.sh --help
+  )
+}
+
+install_rust $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
