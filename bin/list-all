@@ -18,6 +18,7 @@ versions_list=(
   1.13.0
   1.14.0
   1.15.0
+  1.15.1
   nightly
 )
 
