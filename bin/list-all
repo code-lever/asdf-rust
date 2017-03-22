@@ -6,4 +6,4 @@ cmd="curl -s $releases_path"
 
 # Fetch all tag names, and get only second column. Then remove all unnecesary characters.
 versions=$(eval $cmd | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p')
-echo $versions latest
+echo $versions stable beta nightly
