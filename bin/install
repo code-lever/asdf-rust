@@ -25,7 +25,7 @@ download_rustup() {
   (
     mkdir -p $install_path
     cd $install_path
-    curl -sSf https://static.rust-lang.org/rustup > rustup && chmod +x rustup
+    curl -sSf https://static.rust-lang.org/rustup.sh > rustup && chmod +x rustup
     # ./rustup --help
   )
 }
