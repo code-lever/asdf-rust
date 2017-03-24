@@ -1,32 +1,9 @@
 #!/usr/bin/env bash
 
-versions_list=(
-  1.0.0
-  1.1.0
-  1.2.0
-  1.3.0
-  1.4.0
-  1.5.0
-  1.6.0
-  1.7.0
-  1.8.0
-  1.9.0
-  1.10.0
-  1.11.0
-  1.12.0
-  1.12.1
-  1.13.0
-  1.14.0
-  1.15.0
-  1.15.1
-  nightly
-)
+releases_path=https://api.github.com/repos/rust-lang/rust/tags
 
-versions=""
+cmd="curl -s $releases_path"
 
-for version in "${versions_list[@]}"
-do
-  versions="${versions} ${version}"
-done
-
-echo $versions
+# Fetch all tag names, and get only second column. Then remove all unnecesary characters.
+versions=$(eval $cmd | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p')
+echo $versions stable beta nightly
