@@ -7,7 +7,7 @@ install_rust() {
 
   local current_script_path=$(dirname ${BASH_SOURCE[0]})
   local plugin_path=$(dirname $current_script_path)
-  local rustup_path=$plugin_path/rustup
+  local rustup_path=$install_path/bin
 
   # echo "install_type: $install_type"
   # echo "version: $version"
@@ -15,7 +15,7 @@ install_rust() {
 
   not command -v foo >/dev/null 2>&1 || download_rustup $rustup_path
 
-  $rustup_path/rustup.sh --disable-sudo --prefix=$install_path --revision=$version
+  $rustup_path/rustup --disable-sudo --prefix=$install_path --revision=$version
 }
 
 download_rustup() {
@@ -25,7 +25,7 @@ download_rustup() {
   (
     mkdir -p $install_path
     cd $install_path
-    curl -sSf https://static.rust-lang.org/rustup.sh > rustup.sh && chmod +x rustup.sh
+    curl -sSf https://static.rust-lang.org/rustup > rustup && chmod +x rustup
     # ./rustup --help
   )
 }
