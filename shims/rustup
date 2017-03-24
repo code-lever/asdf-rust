@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+source $(dirname $(dirname $0))/lib/utils.sh
+
+plugin="rust"
+revision=$(get_preset_version_for rust)
+prefix=$(get_install_path $plugin "version" $revision)
+
+if [ $# -eq 0 ]; then
+  exec $(get_plugin_path $plugin)/rustup/rustup.sh "$@" --help
+else
+  exec $(get_plugin_path $plugin)/rustup/rustup.sh "$@" --disable-sudo --prefix=$prefix
+fi
