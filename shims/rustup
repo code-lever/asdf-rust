@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source $(dirname $(dirname $0))/lib/utils.sh
 
-bin="rustup"
+bin="bin/rustup"
 plugin="rust"
 revision=$(get_preset_version_for $plugin)
 prefix=$(get_install_path $plugin "version" $revision)
