@@ -13,7 +13,7 @@ install_rust() {
   # echo "version: $version"
   # echo "install_path: $install_path"
 
-  not command -v foo >/dev/null 2>&1 || download_rustup $rustup_path
+  download_rustup $rustup_path
 
   $rustup_path/rustup --disable-sudo --prefix=$install_path --revision=$version
 }
