@@ -1,33 +1,9 @@
 #!/usr/bin/env bash
+set -efuo pipefail
 
-install_rust() {
-  local install_type=$1
-  local version=$2
-  local install_path=$3
+script_dir=$(dirname "${BASH_SOURCE[0]}")
+# shellcheck source=/dev/null
+. "$script_dir/exec-env"
 
-  local current_script_path=$(dirname ${BASH_SOURCE[0]})
-  local plugin_path=$(dirname $current_script_path)
-  local rustup_path=$install_path/bin
-
-  # echo "install_type: $install_type"
-  # echo "version: $version"
-  # echo "install_path: $install_path"
-
-  download_rustup $rustup_path
-
-  $rustup_path/rustup --disable-sudo --prefix=$install_path --revision=$version
-}
-
-download_rustup() {
-  local install_path=$1
-
-  # echo "Downloading rustup to $install_path"
-  (
-    mkdir -p $install_path
-    cd $install_path
-    curl -sSf https://static.rust-lang.org/rustup.sh > rustup && chmod +x rustup
-    # ./rustup --help
-  )
-}
-
-install_rust $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
+curl --fail --silent --show-error https://sh.rustup.rs \
+| sh -s -- -y --no-modify-path --default-toolchain "$ASDF_INSTALL_VERSION"

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -efuo pipefail
+export CARGO_HOME=$ASDF_INSTALL_PATH
+export RUSTUP_HOME=$ASDF_INSTALL_PATH
