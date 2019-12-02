@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -efuo pipefail
 
 script_dir=$(dirname "${BASH_SOURCE[0]}")
 # shellcheck source=/dev/null
