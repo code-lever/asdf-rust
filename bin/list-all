@@ -2,7 +2,14 @@
 
 releases_path=https://api.github.com/repos/rust-lang/rust/tags
 
-cmd="curl -s $releases_path"
+cmd="curl -s"
+
+# add auth token in CI environment
+if [ -n "$GITHUB_API_TOKEN" ]; then
+ cmd="$cmd -H 'Authorization: token $GITHUB_API_TOKEN'"
+fi
+
+cmd="$cmd $releases_path"
 
 # Fetch all tag names, and get only second column. Then remove all unnecesary characters.
 versions=$(eval $cmd | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p' | sed -n '1!G;h;$p')
