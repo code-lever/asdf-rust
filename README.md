@@ -13,3 +13,16 @@ asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
 ## Use
 
 Check [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to install & manage versions of Rust.
+
+### Default `cargo` crates
+
+asdf-rust can automatically install a default set of packages with `cargo` right after installing a Rust version.
+To enable this feature, provide a \$HOME/.default-cargo-crates file that lists one package per line, for example:
+
+```
+// cli-tools
+ripgrep
+
+// install from source
+--git https://github.com/sharkdp/bat
+```
