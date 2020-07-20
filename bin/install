@@ -15,8 +15,8 @@ install_default_cargo_crates() {
   if [ ! -f $default_cargo_crates ]; then return; fi
 
   cat "$default_cargo_crates" | while read -r line; do
-    name=$(echo "$line" | \
-      sed 's|\(.*\) //.*$|\1|' | \ # handle comments after crate name
+    name=$(echo "$line" | 
+      sed 's|\(.*\) //.*$|\1|' |  # handle comments after crate name
       sed -E 's|^[[:space:]]*//.*||') # handle full line comments
 
     if [ -z $name ]; then continue ; fi
