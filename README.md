@@ -29,3 +29,5 @@ ripgrep
 // install from source
 --git https://github.com/sharkdp/bat
 ```
+
+You can specify a non-default location of this file by setting a `ASDF_CRATE_DEFAULT_PACKAGES_FILE` variable.
