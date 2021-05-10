@@ -10,7 +10,7 @@ install_rust() {
 }
 
 install_default_cargo_crates() {
-  local default_cargo_crates="${HOME}/.default-cargo-crates"
+  local default_cargo_crates="${ASDF_CRATE_DEFAULT_PACKAGES_FILE:=$HOME}/.default-cargo-crates"
 
   if [ ! -f $default_cargo_crates ]; then return; fi
 
