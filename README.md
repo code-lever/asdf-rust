@@ -20,7 +20,7 @@ Check [asdf](https://github.com/asdf-vm/asdf) readme for instructions on how to 
 ### Default `cargo` crates
 
 asdf-rust can automatically install a default set of packages with `cargo` right after installing a Rust version.
-To enable this feature, provide a \$HOME/.default-cargo-crates file that lists one package per line, for example:
+To enable this feature, provide a `$HOME/.default-cargo-crates` file that lists one package per line, for example:
 
 ```
 // cli-tools
