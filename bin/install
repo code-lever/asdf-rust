@@ -6,7 +6,7 @@ script_dir=$(dirname "${BASH_SOURCE[0]}")
 
 install_rust() {
     curl --fail --silent --show-error https://sh.rustup.rs \
-    | sh -s -- -y --no-modify-path --default-toolchain "$ASDF_INSTALL_VERSION"
+    | sh -s -- -y --no-modify-path --profile minimal --default-toolchain "$ASDF_INSTALL_VERSION"
 }
 
 install_default_cargo_crates() {
