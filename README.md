@@ -31,3 +31,5 @@ ripgrep
 ```
 
 You can specify a non-default location of this file by setting a `ASDF_CRATE_DEFAULT_PACKAGES_FILE` variable.
+
+`ASDF_RUST_PROFILE` variable can be used to install different from `default` profile (e.g. minimal or complete).
