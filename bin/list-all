@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-releases_path=https://api.github.com/repos/rust-lang/rust/tags
+releases_path=https://api.github.com/repos/rust-lang/rust/tags?page=
 
 cmd="curl -s"
 
@@ -9,8 +9,13 @@ if [ -n "$GITHUB_API_TOKEN" ]; then
  cmd="$cmd -H 'Authorization: token $GITHUB_API_TOKEN'"
 fi
 
-cmd="$cmd $releases_path"
+
+idx=1
+cmd1="$cmd $releases_path$idx"
+idx=2
+cmd2="$cmd $releases_path$idx"
 
 # Fetch all tag names, and get only second column. Then remove all unnecesary characters.
-versions=$(eval $cmd | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p' | sed -n '1!G;h;$p')
-echo nightly beta stable $versions
+versions=$(eval $cmd1 | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p' | sed -n '1!G;h;$p')
+versions2=$(eval $cmd2 | sed -n 's/.*"name": "\([0-9\.]*\)",/\1/p' | sed -n '1!G;h;$p')
+echo nightly beta stable $versions $versions2 
