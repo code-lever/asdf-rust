@@ -5,8 +5,9 @@ script_dir=$(dirname "${BASH_SOURCE[0]}")
 . "$script_dir/exec-env"
 
 install_rust() {
-    curl --fail --silent --show-error https://sh.rustup.rs \
-    | sh -s -- -y --no-modify-path --default-toolchain "$ASDF_INSTALL_VERSION" --profile "${ASDF_RUST_PROFILE:-default}"
+    curl --fail --silent --show-error -O https://sh.rustup.rs 
+    sh sh.rustup.rs -s -- -y --no-modify-path --default-toolchain "$ASDF_INSTALL_VERSION" --profile "${ASDF_RUST_PROFILE:-default}"
+    rustup target add "$ASDF_RUST_CROSS_ARCH"
 }
 
 install_default_cargo_crates() {
