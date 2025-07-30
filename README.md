@@ -7,7 +7,7 @@ Rust plugin for [asdf](https://github.com/asdf-vm/asdf) version manager.
 ## Install
 
 ```
-asdf plugin-add rust https://github.com/code-lever/asdf-rust.git
+asdf plugin add rust https://github.com/code-lever/asdf-rust.git
 ```
 
 After you have installed rust, do NOT follow the directions it outputs to update your PATH
